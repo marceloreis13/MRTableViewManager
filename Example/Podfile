@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MRTableViewManager_Example' do
+  pod 'MRTableViewManager', :path => '../'
+
+  target 'MRTableViewManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
