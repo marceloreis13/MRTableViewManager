@@ -1,0 +1,44 @@
+{
+	"foobars": [
+	{
+	"foobarId": 1,
+	"title": "Lorem ipsum"
+	},
+	{
+	"foobarId": 2,
+	"title": "Dolor sit"
+	},
+	{
+	"foobarId": 3,
+	"title": "Amet"
+	},
+	{
+	"foobarId": 4,
+	"title": "Consectetur adipiscing"
+	},
+	{
+	"foobarId": 5,
+	"title": "Elit"
+	},
+	{
+	"foobarId": 6,
+	"title": "Nunc non"
+	},
+	{
+	"foobarId": 7,
+	"title": "Auctor eros"
+	},
+	{
+	"foobarId": 8,
+	"title": "Id volutpa"
+	},
+	{
+	"foobarId": 9,
+	"title": "Praesent porta"
+	},
+	{
+	"foobarId": 10,
+	"title": "Tellus vitae"
+	}
+	]
+}

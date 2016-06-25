@@ -1,5 +1,7 @@
 PODS:
-  - MRTableViewManager (0.1.0)
+  - MRTableViewManager (0.1.0):
+    - SwiftyJSON (~> 2.3)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - MRTableViewManager (from `../`)
@@ -9,7 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MRTableViewManager: 534b0ebf3812f14f96207a69e36e9affffc660d3
+  MRTableViewManager: f92406cbb860fb9cc27ce55891185e85c49e0c3e
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 PODFILE CHECKSUM: 32ab4d951bd3886498d12ac059a5a70920ad4334
 
