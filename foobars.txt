@@ -2,43 +2,43 @@
 	"foobars": [
 	{
 	"foobarId": 1,
-	"title": "Lorem ipsum"
+	"title": "Gandalf"
 	},
 	{
 	"foobarId": 2,
-	"title": "Dolor sit"
+	"title": "Aragorn"
 	},
 	{
 	"foobarId": 3,
-	"title": "Amet"
+	"title": “Bilbo”
 	},
 	{
 	"foobarId": 4,
-	"title": "Consectetur adipiscing"
+	"title": "Frodo Baggins”
 	},
 	{
 	"foobarId": 5,
-	"title": "Elit"
+	"title": “Sam”
 	},
 	{
 	"foobarId": 6,
-	"title": "Nunc non"
+	"title": “Gollum”
 	},
 	{
 	"foobarId": 7,
-	"title": "Auctor eros"
+	"title": “Legolas”
 	},
 	{
 	"foobarId": 8,
-	"title": "Id volutpa"
+	"title": “Gimli”
 	},
 	{
 	"foobarId": 9,
-	"title": "Praesent porta"
+	"title": “Pippin”
 	},
 	{
 	"foobarId": 10,
-	"title": "Tellus vitae"
+	"title": “Merry”
 	}
 	]
 }

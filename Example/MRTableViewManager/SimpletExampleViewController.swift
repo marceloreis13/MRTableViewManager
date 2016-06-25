@@ -9,7 +9,7 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-class TableViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
+class SimpleExampleViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
 	// MARK: - Attributes
 	
 	// Privates
@@ -24,13 +24,6 @@ class TableViewController: UITableViewController, TableViewManagerDelegate, Tabl
 		
 		//Update tableView data
 		self._updateTableView()
-		
-		//Auto Layout
-		self.tableView.rowHeight = UITableViewAutomaticDimension
-	}
-	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
 	}
 	
 	func refreshTableView(){
@@ -80,7 +73,7 @@ class TableViewController: UITableViewController, TableViewManagerDelegate, Tabl
 		if let _id = _foo.data["foobarId"].int {
 			_rowContent = "\(_id)"
 			if let _title = _foo.data["title"].string {
-				_rowContent = "\(_id):\(_title)"
+				_rowContent = "\(_title)"
 			}
 		}
 		

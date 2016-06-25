@@ -23,7 +23,7 @@ public class TableViewManager {
 	
 	// MARK: - Private Atributtes
 	private var _sections:[TableViewSection]
-	private var _preloadItems:Int = 3
+	private var _preloadItems:Int
 	
 	// MARK: - Public Atributtes
 	public var delegate: TableViewManagerDelegate?
@@ -31,9 +31,12 @@ public class TableViewManager {
 	public var currentPage: Int = 1
 	
 	// MARK: - Init
-	public init(){
+	public init(preloadItems:Int=1){
 		//Start _sections
 		self._sections = [TableViewSection]()
+		
+		//Set how many preloads will be showed
+		self._preloadItems = preloadItems
 		
 		//Action preload
 		self.addPreload()
