@@ -1,0 +1,6 @@
+framework module MRTableViewManager {
+  umbrella header "MRTableViewManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

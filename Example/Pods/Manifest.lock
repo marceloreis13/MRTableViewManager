@@ -1,0 +1,16 @@
+PODS:
+  - MRTableViewManager (0.1.0)
+
+DEPENDENCIES:
+  - MRTableViewManager (from `../`)
+
+EXTERNAL SOURCES:
+  MRTableViewManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MRTableViewManager: 534b0ebf3812f14f96207a69e36e9affffc660d3
+
+PODFILE CHECKSUM: 32ab4d951bd3886498d12ac059a5a70920ad4334
+
+COCOAPODS: 1.0.1
