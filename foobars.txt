@@ -10,35 +10,35 @@
 	},
 	{
 	"foobarId": 3,
-	"title": “Bilbo”
+	"title": "Bilbo"
 	},
 	{
 	"foobarId": 4,
-	"title": "Frodo Baggins”
+	"title": "Frodo Baggins"
 	},
 	{
 	"foobarId": 5,
-	"title": “Sam”
+	"title": "Sam"
 	},
 	{
 	"foobarId": 6,
-	"title": “Gollum”
+	"title": "Gollum"
 	},
 	{
 	"foobarId": 7,
-	"title": “Legolas”
+	"title": "Legolas"
 	},
 	{
 	"foobarId": 8,
-	"title": “Gimli”
+	"title": "Gimli"
 	},
 	{
 	"foobarId": 9,
-	"title": “Pippin”
+	"title": "Pippin"
 	},
 	{
 	"foobarId": 10,
-	"title": “Merry”
+	"title": "Merry"
 	}
 	]
 }

@@ -14,7 +14,9 @@ class PreloadExampleTableViewController: UITableViewController, TableViewManager
 	// MARK: - Attributes
 	
 	// Privates
-	private let _tableViewManager:TableViewManager = TableViewManager()
+	//You can insert how many preload items that you want, but by default is 1 item
+	private let _tableViewManager:TableViewManager = TableViewManager(preloadItems: 3)
+//	private let _tableViewManager:TableViewManager = TableViewManager()
 
 	//XIBs
 	private let MRContentTVC = "MRContentTableViewCell"
@@ -31,6 +33,7 @@ class PreloadExampleTableViewController: UITableViewController, TableViewManager
 		self._updateTableView()
 		
 		// Register XIBs
+		//Here, you can asign NIBs made by yourself, just alter this lines above
 		self.tableView.registerNib(UINib(nibName: self.MRContentTVC, bundle: nil), forCellReuseIdentifier: self.MRContentTVC)
 		self.tableView.registerNib(UINib(nibName: self.MREmptyTVC, bundle: nil), forCellReuseIdentifier: self.MREmptyTVC)
 		self.tableView.registerNib(UINib(nibName: self.MRPreloadTVC, bundle: nil), forCellReuseIdentifier: self.MRPreloadTVC)
@@ -50,10 +53,12 @@ class PreloadExampleTableViewController: UITableViewController, TableViewManager
 		Serializer.jsonFromUrl(
 			"https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
-				sleep(10)
+	
+				// I put this sleep to force the preload appear in tableview
+				sleep(5)
+				
 				let _json = JSON(data)
 				self._tableViewManager.addSection(_json["foobars"])
-//				self._tableViewManager.addSection([])
 			},
 			errorHandler: { error in
 				NSLog("\(error)")

@@ -38,6 +38,7 @@ class SimpleExampleViewController: UITableViewController, TableViewManagerDelega
 			"https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
 				let _json = JSON(data)
+				print(_json)
 				self._tableViewManager.addSection(_json["foobars"])
 			},
 			errorHandler: { error in
