@@ -38,10 +38,12 @@ class HeaderExampleViewController: UITableViewController, TableViewManagerDelega
             "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars-header.txt",
             completionHandler: { data in
                 let _json = JSON(data)
-                self._tableViewManager.addSection(_json["foobars"]["visitors"], tag: "Visitors")
-                self._tableViewManager.addSection(_json["foobars"]["warriors"], tag: "Warrios")
-                self._tableViewManager.addSection(_json["foobars"]["wizards"], tag: "Wizards")
-                self._tableViewManager.addSection(_json["foobars"]["hobbits"], tag: "Hobbits")
+                let _characters = _json["foobars"][0]
+            
+                self._tableViewManager.addSection(_characters["visitors"], tag: "Visitors")
+                self._tableViewManager.addSection(_characters["warriors"], tag: "Warrios")
+                self._tableViewManager.addSection(_characters["wizards"], tag: "Wizards")
+                self._tableViewManager.addSection(_characters["hobbits"], tag: "Hobbits")
             },
             errorHandler: { error in
                 NSLog("\(error)")
