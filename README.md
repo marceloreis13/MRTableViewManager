@@ -33,7 +33,8 @@ target 'Your Project Name' do
     // ...
     pod 'SwiftyJSON'
     pod 'MRTableViewManager', '~> 0.1.1'
-// ...
+    // ...
+end
 ```
 
 ### Manually
@@ -59,7 +60,7 @@ Contact me either by Linkedin [@marceloreis13](https://www.linkedin.com/in/marce
 
 ## License
     The MIT License (MIT)
-        Copyright (c) 2016 [Marcelo Reis](mailto:marcello@marcelloreis.com)
+        Copyright (c) 2016 Marcelo Reis
 
         Permission is hereby granted, free of charge, to any person obtaining a copy
         of this software and associated documentation files (the "Software"), to deal
