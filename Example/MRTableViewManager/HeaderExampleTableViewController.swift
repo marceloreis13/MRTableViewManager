@@ -38,7 +38,7 @@ class HeaderExampleViewController: UITableViewController, TableViewManagerDelega
             "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars-header.txt",
             completionHandler: { data in
                 let _json = JSON(data)
-                let _characters = _json["foobars"][0]
+                let _characters = _json["foobars"]
             
                 self._tableViewManager.addSection(_characters["visitors"], tag: "Visitors")
                 self._tableViewManager.addSection(_characters["warriors"], tag: "Warrios")
