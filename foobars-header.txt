@@ -1,0 +1,53 @@
+{
+	"foobars": [
+	{
+		"warriors": [
+			{
+			"id": 2,
+			"title": "Aragorn"
+			},
+			{
+			"id": 7,
+			"title": "Legolas"
+			},
+			{
+			"id": 8,
+			"title": "Gimli"
+			}
+		],
+		"wizards":[
+			{
+			"id": 1,
+			"title": "Gandalf"
+			}
+		],
+		"hobbits":[
+			{
+			"id": 4,
+			"title": "Frodo Baggins"
+			},
+			{
+			"id": 5,
+			"title": "Sam"
+			},
+			{
+			"id": 3,
+			"title": "Bilbo"
+			},
+			{
+			"id": 9,
+			"title": "Pippin"
+			},
+			{
+			"id": 10,
+			"title": "Merry"
+			}
+		],
+		"visitors": [
+			{
+			"id": 6,
+			"title": "Gollum"
+			}
+		]
+	]
+}
