@@ -9,7 +9,7 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-class SimpleExampleViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
+final class SimpleExampleViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
 	// MARK: - Attributes
 	
 	// Privates

@@ -10,7 +10,7 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-class PreloadExampleTableViewController: UITableViewController, TableViewManagerDelegate {
+final class PreloadExampleTableViewController: UITableViewController, TableViewManagerDelegate {
 	// MARK: - Attributes
 	
 	// Privates

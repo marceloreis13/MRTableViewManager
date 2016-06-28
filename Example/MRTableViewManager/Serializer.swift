@@ -9,7 +9,7 @@
 import Foundation
 
 // JSON Serializer helper class
-class Serializer {
+final class Serializer {
 	
 	// Retrieve JSON from Url and tries to parse it
 	static func jsonFromUrl(url: String, completionHandler: (NSDictionary) -> (), errorHandler: (NSError?) -> ()) {
