@@ -36,7 +36,6 @@ platform :ios, '8.0'
 target 'Your Project Name' do
     use_frameworks!
     // ...
-    pod 'SwiftyJSON'
     pod 'MRTableViewManager', '~> 0.1.1'
     // ...
 end
