@@ -70,11 +70,8 @@ class SimpleExampleViewController: UITableViewController, TableViewManagerDelega
 		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
 		let _foo = self._tableViewManager.get(indexPath)
 		var _rowContent:String = ""
-		if let _id = _foo.data["foobarId"].int {
-			_rowContent = "\(_id)"
-			if let _title = _foo.data["title"].string {
-				_rowContent = "\(_title)"
-			}
+		if let _character = _foo.data["character"].string {
+			_rowContent = "\(_character)"
 		}
 		
 		_cell.textLabel?.text = _rowContent

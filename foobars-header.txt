@@ -3,50 +3,50 @@
 	{
 		"warriors": [
 			{
-			"foobarId": 2,
-			"title": "Aragorn"
+			"id": 2,
+			"character": "Aragorn"
 			},
 			{
-			"foobarId": 7,
-			"title": "Legolas"
+			"id": 7,
+			"character": "Legolas"
 			},
 			{
-			"foobarId": 8,
-			"title": "Gimli"
+			"id": 8,
+			"character": "Gimli"
 			}
 		],
 		"wizards":[
 			{
-			"foobarId": 1,
-			"title": "Gandalf"
+			"id": 1,
+			"character": "Gandalf"
 			}
 		],
 		"hobbits":[
 			{
-			"foobarId": 4,
-			"title": "Frodo Baggins"
+			"id": 4,
+			"character": "Frodo Baggins"
 			},
 			{
-			"foobarId": 5,
-			"title": "Sam"
+			"id": 5,
+			"character": "Sam"
 			},
 			{
-			"foobarId": 3,
-			"title": "Bilbo"
+			"id": 3,
+			"character": "Bilbo"
 			},
 			{
-			"foobarId": 9,
-			"title": "Pippin"
+			"id": 9,
+			"character": "Pippin"
 			},
 			{
-			"foobarId": 10,
-			"title": "Merry"
+			"id": 10,
+			"character": "Merry"
 			}
 		],
 		"visitors": [
 			{
-			"foobarId": 6,
-			"title": "Gollum"
+			"id": 6,
+			"character": "Gollum"
 			}
 		]
     }

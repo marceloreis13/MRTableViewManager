@@ -46,7 +46,17 @@ class MRContentTableViewCell: TableViewCell {
 			self.labelBio.text = _bio
 		}
 		if let _image = self.row?.data["image"].string {
-			self.imageView?.loadImageFromUrl(_image)
+			ImageLoader.sharedLoader.imageForUrl(_image, completionHandler: { loadedImage in
+				
+				if loadedImage != nil {
+					
+					self.imgCharacter.image = loadedImage
+					self.imgCharacter.fixContent(.Top)
+					self.setNeedsLayout()
+					
+				}
+				
+			})
 		}
 	}
 
