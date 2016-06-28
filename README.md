@@ -52,6 +52,7 @@ Although it's not recommended, you just need to drop MRTableViewManager folder i
 ```swift
 import MRTableViewManager
 
+class PreloadExampleTableViewController: UITableViewController, TableViewManagerDelegate {
 // ...
 
 let tableViewManager = MRTableViewManager()
