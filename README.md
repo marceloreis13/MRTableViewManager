@@ -7,6 +7,11 @@ With few codes, you can build a complete table view with pagination, preload cel
 [![License](https://img.shields.io/cocoapods/l/MRTableViewManager.svg?style=flat)](http://cocoapods.org/pods/MRTableViewManager)
 [![Platform](https://img.shields.io/cocoapods/p/MRTableViewManager.svg?style=flat)](http://cocoapods.org/pods/MRTableViewManager)
 
+**Preload** | **Simple**	 |
+:--:|:--:|	
+![Preload](Images/gif-2.gif "Preload") | ![Simple](Images/gif-1.gif "Simple") |
+**Headers** | **Empty** |
+![Headers](Images/gif-4.gif "Headers") | ![Empty](Images/gif3.gif "Empty") |
 
 ## Example
 
