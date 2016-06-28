@@ -44,7 +44,7 @@ end
 
 ### Manually
 
-Although it's not recommended, you just need to drop SwiftLinkPreview folder into Xcode project (make sure to enable "Copy items if needed" and "Create groups").
+Although it's not recommended, you just need to drop MRTableViewManager folder into Xcode project (make sure to enable "Copy items if needed" and "Create groups").
 
 ## Usage
 
