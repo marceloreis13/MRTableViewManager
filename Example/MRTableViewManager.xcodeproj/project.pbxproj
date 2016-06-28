@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04D3A6E0A3507E0291743C25 /* Pods_MRTableViewManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21B5ABFAEA132959F25D2FA /* Pods_MRTableViewManager_Example.framework */; };
 		47EA873AB1DE77E104906C64 /* Pods_MRTableViewManager_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE3D76638DB38C611846419 /* Pods_MRTableViewManager_Tests.framework */; };
+		590A8A851D2207CF00627062 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590A8A841D2207CF00627062 /* UIImageViewExtension.swift */; };
 		591348D21D1EE680005081B8 /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591348D11D1EE680005081B8 /* Serializer.swift */; };
 		59153B8B1D1F339400C34C2A /* MRContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59153B851D1F339400C34C2A /* MRContentTableViewCell.swift */; };
 		59153B8C1D1F339400C34C2A /* MRContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59153B861D1F339400C34C2A /* MRContentTableViewCell.xib */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		487D33B09AC0D46ED3516AEF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4CE3D76638DB38C611846419 /* Pods_MRTableViewManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRTableViewManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		590A8A841D2207CF00627062 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		591348D11D1EE680005081B8 /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		59153B851D1F339400C34C2A /* MRContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRContentTableViewCell.swift; sourceTree = "<group>"; };
 		59153B861D1F339400C34C2A /* MRContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MRContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				59153B971D1F36F100C34C2A /* EmptyExampleTableViewController.swift */,
 				59D1BDA01D21D16700F94358 /* HeaderExampleTableViewController.swift */,
+				590A8A841D2207CF00627062 /* UIImageViewExtension.swift */,
 			);
 			name = "Example for MRTableViewManager";
 			path = MRTableViewManager;
@@ -407,6 +410,7 @@
 				59153B941D1F33C400C34C2A /* PreloadExampleTableViewController.swift in Sources */,
 				59153B931D1F33C400C34C2A /* SimpletExampleViewController.swift in Sources */,
 				59D1BDA11D21D16700F94358 /* HeaderExampleTableViewController.swift in Sources */,
+				590A8A851D2207CF00627062 /* UIImageViewExtension.swift in Sources */,
 				59153B8F1D1F339400C34C2A /* MRPreloadTableViewCell.swift in Sources */,
 				59153B8D1D1F339400C34C2A /* MREmptyTableViewCell.swift in Sources */,
 				59153B8B1D1F339400C34C2A /* MRContentTableViewCell.swift in Sources */,

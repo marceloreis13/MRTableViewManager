@@ -55,7 +55,7 @@ class PreloadExampleTableViewController: UITableViewController, TableViewManager
 			completionHandler: { data in
 	
 				// I put this sleep to force the preload appear in tableview
-				sleep(5)
+				sleep(3)
 				
 				let _json = JSON(data)
 				self._tableViewManager.addSection(_json["foobars"])

@@ -18,18 +18,35 @@ class MRContentTableViewCell: TableViewCell {
 	
 	// MARK: - Outlets
 	
+	//Images
+	@IBOutlet weak var imgCharacter: UIImageView!
+	
 	//Labels
-	@IBOutlet weak var labelContent: UILabel!
+	@IBOutlet weak var labelCharacter: UILabel!
+	@IBOutlet weak var labelActor: UILabel!
+	@IBOutlet weak var labelBio: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 		
-		self.labelContent.text = ""
+		self.labelCharacter.text = ""
+		self.labelActor.text = ""
+		self.labelBio.text = ""
+		self.imgCharacter.image = UIImage()
     }
 	
 	override func updateViewData() {
-		if let _title = self.row?.data["title"].string {
-			self.labelContent.text = _title
+		if let _character = self.row?.data["character"].string {
+			self.labelCharacter.text = _character
+		}
+		if let _actor = self.row?.data["actor"].string {
+			self.labelActor.text = _actor
+		}
+		if let _bio = self.row?.data["bio"].string {
+			self.labelBio.text = _bio
+		}
+		if let _image = self.row?.data["image"].string {
+			self.imageView?.loadImageFromUrl(_image)
 		}
 	}
 
