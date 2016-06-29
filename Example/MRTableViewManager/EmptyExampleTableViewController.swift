@@ -10,7 +10,8 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-final class EmptyExampleTableViewController: UITableViewController, TableViewManagerDelegate {
+// MARK: - Life Cycle
+final class EmptyExampleTableViewController: UITableViewController {
 	// MARK: - Attributes
 	
 	// Privates
@@ -50,7 +51,14 @@ final class EmptyExampleTableViewController: UITableViewController, TableViewMan
 		self._tableViewManager.addSection([])
 	}
 	
-	// MARK: TableViewManager Delegate
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+}
+
+// MARK: - TableViewManager Delegate
+extension EmptyExampleTableViewController: TableViewManagerDelegate {
 	
 	func getTableView() -> UITableView {
 		return self.tableView
@@ -60,8 +68,10 @@ final class EmptyExampleTableViewController: UITableViewController, TableViewMan
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
-	
-	// MARK: TableView Delegate functions
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension EmptyExampleTableViewController {
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
@@ -93,11 +103,6 @@ final class EmptyExampleTableViewController: UITableViewController, TableViewMan
 	
 	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return 100
-	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 	
 }

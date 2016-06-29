@@ -9,13 +9,13 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-final class HeaderExampleViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
+// MARK: Life Cycle
+final class HeaderExampleViewController: UITableViewController {
     // MARK: - Attributes
     
     // Privates
     private let _tableViewManager:TableViewManager = TableViewManager()
     
-    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,41 +50,45 @@ final class HeaderExampleViewController: UITableViewController, TableViewManager
             }
         )
     }
-    
-    // MARK: TableViewManager Delegate
-    
-    func getTableView() -> UITableView {
-        return self.tableView
-    }
-    
-    func next(callback: (TableViewManager.Callback)?) {
-        self._tableViewManager.currentPage += 1
-        self._updateTableView()
-    }
-    
-    // MARK: TableView Delegate functions
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self._tableViewManager.total()
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self._tableViewManager.total(section)
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self._tableViewManager.sectionTag(section);
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
-        let _foo = self._tableViewManager.get(indexPath)
-        var _rowContent:String = ""
+}
+
+
+// MARK: - TableViewManagerDelegate
+extension HeaderExampleViewController: TableViewManagerDelegate {
+	func getTableView() -> UITableView {
+		return self.tableView
+	}
+	
+	func next(callback: (TableViewManager.Callback)?) {
+		self._tableViewManager.currentPage += 1
+		self._updateTableView()
+	}
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension HeaderExampleViewController {
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return self._tableViewManager.total()
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return self._tableViewManager.total(section)
+	}
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return self._tableViewManager.sectionTag(section);
+	}
+	
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
+		let _foo = self._tableViewManager.get(indexPath)
+		var _rowContent:String = ""
 		if let _character = _foo.data["character"].string {
 			_rowContent = "\(_character)"
 		}
 		
-        _cell.textLabel?.text = _rowContent
-        
-        return _cell
-    }
+		_cell.textLabel?.text = _rowContent
+		
+		return _cell
+	}
 }

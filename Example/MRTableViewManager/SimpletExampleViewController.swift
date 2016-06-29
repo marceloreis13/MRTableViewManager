@@ -9,7 +9,8 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-final class SimpleExampleViewController: UITableViewController, TableViewManagerDelegate, TableViewCellDelegate {
+// MARK: - Life Cycle
+final class SimpleExampleViewController: UITableViewController {
 	// MARK: - Attributes
 	
 	// Privates
@@ -45,9 +46,10 @@ final class SimpleExampleViewController: UITableViewController, TableViewManager
 			}
 		)
 	}
-	
-	// MARK: TableViewManager Delegate
-	
+}
+
+// MARK: TableViewManagerDelegate
+extension SimpleExampleViewController: TableViewManagerDelegate {
 	func getTableView() -> UITableView {
 		return self.tableView
 	}
@@ -56,8 +58,10 @@ final class SimpleExampleViewController: UITableViewController, TableViewManager
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
-	
-	// MARK: TableView Delegate functions
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension SimpleExampleViewController {
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
@@ -77,6 +81,5 @@ final class SimpleExampleViewController: UITableViewController, TableViewManager
 		_cell.textLabel?.text = _rowContent
 		
 		return _cell
-	}
+	}	
 }
-

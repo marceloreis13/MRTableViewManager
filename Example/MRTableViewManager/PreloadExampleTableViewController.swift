@@ -10,13 +10,13 @@ import UIKit
 import MRTableViewManager
 import SwiftyJSON
 
-final class PreloadExampleTableViewController: UITableViewController, TableViewManagerDelegate {
+// MARK: - Life Cycle
+final class PreloadExampleTableViewController: UITableViewController {
 	// MARK: - Attributes
 	
 	// Privates
 	//You can insert how many preload items that you want, but by default is 1 item
 	private let _tableViewManager:TableViewManager = TableViewManager(preloadItems: 3)
-//	private let _tableViewManager:TableViewManager = TableViewManager()
 
 	//XIBs
 	private let MRContentTVC = "MRContentTableViewCell"
@@ -65,9 +65,16 @@ final class PreloadExampleTableViewController: UITableViewController, TableViewM
 			}
 		)
 	}
-
-	// MARK: TableViewManager Delegate
 	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
+}
+
+// MARK: - TableViewManagerDelegate
+extension PreloadExampleTableViewController: TableViewManagerDelegate {
 	func getTableView() -> UITableView {
 		return self.tableView
 	}
@@ -76,8 +83,10 @@ final class PreloadExampleTableViewController: UITableViewController, TableViewM
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
-	
-	// MARK: TableView Delegate functions
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension PreloadExampleTableViewController {
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
@@ -109,11 +118,5 @@ final class PreloadExampleTableViewController: UITableViewController, TableViewM
 	
 	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return 100
-	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
-
+	}	
 }
