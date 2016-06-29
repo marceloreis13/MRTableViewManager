@@ -39,6 +39,4 @@ This is a lib to help handle tableviewcontrollers and viewcellcontrollers
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-
-s.dependency 'SwiftyJSON', '~> 2.3'
 end

@@ -8,7 +8,6 @@
 
 import UIKit
 import MRTableViewManager
-import SwiftyJSON
 
 class MRContentTableViewCell: TableViewCell {
 	// MARK: - Attribures
@@ -36,24 +35,22 @@ class MRContentTableViewCell: TableViewCell {
     }
 	
 	override func updateViewData() {
-		if let _character = self.row?.data["character"].string {
+		if let _character = self.row?.data["character"] as? String {
 			self.labelCharacter.text = _character
 		}
-		if let _actor = self.row?.data["actor"].string {
+		if let _actor = self.row?.data["actor"] as? String {
 			self.labelActor.text = _actor
 		}
-		if let _bio = self.row?.data["bio"].string {
+		if let _bio = self.row?.data["bio"] as? String {
 			self.labelBio.text = _bio
 		}
-		if let _image = self.row?.data["image"].string {
+		if let _image = self.row?.data["image"] as? String {
 			ImageLoader.sharedLoader.imageForUrl(_image, completionHandler: { loadedImage in
 				
 				if loadedImage != nil {
-					
 					self.imgCharacter.image = loadedImage
 					self.imgCharacter.fixContent(.Top)
 					self.setNeedsLayout()
-					
 				}
 				
 			})

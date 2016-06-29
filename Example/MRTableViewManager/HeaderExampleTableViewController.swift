@@ -7,7 +7,6 @@
 //
 import UIKit
 import MRTableViewManager
-import SwiftyJSON
 
 // MARK: Life Cycle
 final class HeaderExampleViewController: UITableViewController {
@@ -37,13 +36,21 @@ final class HeaderExampleViewController: UITableViewController {
         Serializer.jsonFromUrl(
             "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars-header.txt",
             completionHandler: { data in
-                let _json = JSON(data)
-                let _characters = _json["foobars"]
-            
-                self._tableViewManager.addSection(_characters["visitors"], tag: "Visitors")
-                self._tableViewManager.addSection(_characters["warriors"], tag: "Warrios")
-                self._tableViewManager.addSection(_characters["wizards"], tag: "Wizards")
-                self._tableViewManager.addSection(_characters["hobbits"], tag: "Hobbits")
+				if let _characters: NSDictionary = data["foobars"] as? NSDictionary {
+					if let _visitors: [NSDictionary] = _characters["visitors"] as? [NSDictionary] {
+						self._tableViewManager.addSection(_visitors, tag: "Visitors")
+					}
+					if let _warriors: [NSDictionary] = _characters["warriors"] as? [NSDictionary] {
+						self._tableViewManager.addSection(_warriors, tag: "Warrios")
+					}
+					if let _wizards: [NSDictionary] = _characters["wizards"] as? [NSDictionary] {
+						self._tableViewManager.addSection(_wizards, tag: "Wizards")
+					}
+					if let _hobbits: [NSDictionary] = _characters["hobbits"] as? [NSDictionary] {
+						self._tableViewManager.addSection(_hobbits, tag: "Hobbits")
+					}
+				}
+				
             },
             errorHandler: { error in
                 NSLog("\(error)")
@@ -83,7 +90,7 @@ extension HeaderExampleViewController {
 		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
 		let _foo = self._tableViewManager.get(indexPath)
 		var _rowContent:String = ""
-		if let _character = _foo.data["character"].string {
+		if let _character = _foo.data["character"] as? String {
 			_rowContent = "\(_character)"
 		}
 		

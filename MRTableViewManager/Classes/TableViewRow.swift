@@ -6,15 +6,13 @@
 //
 //
 
-import SwiftyJSON
-
-// MARK: TVRow Class
+// MARK: - TVRow Class
 public class TableViewRow {
 	// MARK: Proprieties
-	public let data: SwiftyJSON.JSON!
+	public let data: NSDictionary
 	
 	// MARK: Init
-	public init(data: SwiftyJSON.JSON){
+	public init(data: NSDictionary){
 		self.data = data
 	}
 }

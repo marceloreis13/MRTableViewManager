@@ -8,7 +8,6 @@
 
 import UIKit
 import MRTableViewManager
-import SwiftyJSON
 
 // MARK: - Life Cycle
 final class EmptyExampleTableViewController: UITableViewController {

@@ -7,7 +7,6 @@
 //
 import UIKit
 import MRTableViewManager
-import SwiftyJSON
 
 // MARK: - Life Cycle
 final class SimpleExampleViewController: UITableViewController {
@@ -38,8 +37,9 @@ final class SimpleExampleViewController: UITableViewController {
 		Serializer.jsonFromUrl(
 			"https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
-				let _json = JSON(data)
-				self._tableViewManager.addSection(_json["foobars"])
+				if let _characters: [NSDictionary] = data["foobars"] as? [NSDictionary] {
+					self._tableViewManager.addSection(_characters)
+				}
 			},
 			errorHandler: { error in
 				NSLog("\(error)")
@@ -74,7 +74,7 @@ extension SimpleExampleViewController {
 		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
 		let _foo = self._tableViewManager.get(indexPath)
 		var _rowContent:String = ""
-		if let _character = _foo.data["character"].string {
+		if let _character = _foo.data["character"] as? String {
 			_rowContent = "\(_character)"
 		}
 		

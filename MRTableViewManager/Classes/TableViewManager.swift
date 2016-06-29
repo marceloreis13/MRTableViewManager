@@ -6,8 +6,6 @@
 //
 //
 
-import SwiftyJSON
-
 // MARK: Table View Manager Delegate
 public protocol TableViewManagerDelegate {
 	// Attributes
@@ -55,19 +53,19 @@ public class TableViewManager {
 		}
 	}
 	
-	private func _processRowsData(data: SwiftyJSON.JSON) -> [TableViewRow]{
+	private func _processRowsData(data: [NSDictionary]) -> [TableViewRow]{
 		// Rows map
 		var _rows:[TableViewRow] = []
 		
 		//Loop with data received
-		for (_, n) in data {
-			_rows.append(TableViewRow(data: n))
+		for item in data {
+			_rows.append(TableViewRow(data: item))
 		}
 		
 		return _rows
 	}
 	
-	private func _addSection(data: JSON, tag:String = "", type:SectionType = .Unknow) -> TableViewSection {
+	private func _addSection(data: [NSDictionary], tag:String = "", type:SectionType = .Unknow) -> TableViewSection {
 		//Remove preload before add any section
 		self._removePreload()
 		
@@ -78,7 +76,7 @@ public class TableViewManager {
 		var _type = type
 		
 		if _rows.isEmpty {
-			_rows = self._processRowsData(JSON([]))
+			_rows = self._processRowsData([])
 			_type = .Empty
 		}
 		
@@ -112,17 +110,19 @@ public class TableViewManager {
 	}
 	
 	// MARK: - Public functions
-	public func addSection(data: JSON, tag:String = "") -> TableViewSection {
-		var _data = data
-		if data.arrayObject == nil {
-			_data = JSON([data])
+	
+	public func addSection(data: [NSDictionary], tag:String = "") -> TableViewSection {
+		var _data:[NSDictionary] = data
+		if data.count == 0 {
+			_data = []
 		}
+		print(data.count)
 		let _section = self._addSection(_data, tag: tag, type: .Content)
 		
 		return _section
 	}
 	
-	public func addSectionScrollingToEnd(data: JSON, tag:String = ""){
+	public func addSectionScrollingToEnd(data: [NSDictionary], tag:String = ""){
 		//Add Section
 		let _section = self.addSection(data, tag: tag)
 		
@@ -143,10 +143,9 @@ public class TableViewManager {
 		
 		self.clear()
 		
-		let _empty = JSON([])
 		var _rows = [TableViewRow]()
 		for _ in 1...self._preloadItems {
-			_rows.append(TableViewRow(data: _empty))
+			_rows.append(TableViewRow(data: NSDictionary()))
 		}
 		
 		let _section:TableViewSection = TableViewSection(rows: _rows, tag: "preload", type: .Preload)
@@ -189,7 +188,7 @@ public class TableViewManager {
 	}
 	
 	public func get(indexPath: NSIndexPath) -> TableViewRow {
-		guard !self._sections.isEmpty && !self._sections[indexPath.section].rows.isEmpty else {return TableViewRow(data: JSON([]))}
+		guard !self._sections.isEmpty && !self._sections[indexPath.section].rows.isEmpty else {return TableViewRow(data: NSDictionary())}
 		
 		return self._sections[indexPath.section].rows[indexPath.row]
 	}

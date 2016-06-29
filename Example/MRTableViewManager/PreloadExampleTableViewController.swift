@@ -57,8 +57,9 @@ final class PreloadExampleTableViewController: UITableViewController {
 				// I put this sleep to force the preload appear in tableview
 				sleep(3)
 				
-				let _json = JSON(data)
-				self._tableViewManager.addSection(_json["foobars"])
+				if let _characters: [NSDictionary] = data["foobars"] as? [NSDictionary] {
+					self._tableViewManager.addSection(_characters)
+				}
 			},
 			errorHandler: { error in
 				NSLog("\(error)")
