@@ -25,7 +25,7 @@ This is a lib to help handle tableviewcontrollers and viewcellcontrollers
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Marcelo Reis' => 'marcello@marcelloreis.com' }
-  s.source           = { :git => 'https://github.com/marceloreis13/MRTableViewManager.git', :commit => "11b1bd48c3f6c2217c5421fb2c57f8e2e6ec846d" }
+  s.source           = { :git => 'https://github.com/marceloreis13/MRTableViewManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
