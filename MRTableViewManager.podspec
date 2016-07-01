@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MRTableViewManager'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of MRTableViewManager.'
+  s.version          = '0.1.3'
+  s.summary          = 'MRTableViewManager is a nice lib.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+This is a lib to help handle tableviewcontrollers and viewcellcontrollers
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/MRTableViewManager'
+  s.homepage         = 'https://github.com/marceloreis13/MRTableViewManager'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Marcelo Reis' => 'marcello@marcelloreis.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/MRTableViewManager.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/marceloreis13/MRTableViewManager.git', :commit => "11b1bd48c3f6c2217c5421fb2c57f8e2e6ec846d" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

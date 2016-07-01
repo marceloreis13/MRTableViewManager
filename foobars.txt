@@ -1,0 +1,74 @@
+{
+   "foobars":[
+      {
+         "id":1,
+         "character":"Gandalf",
+         "actor":"Ian McKellen",
+         "bio":"Gandalf the Grey (also known as Mithrandir and Olórin) is a wise wizard who was sent to Middle-Earth around year 1000 in the Third Age, more than 2000 years before the setting of The Lord of the Rings, to help the free peoples fight the evil Sauron, along with Saruman the White (who later abandoned his task) and three other wizards. Gandalf befriended many peoples and became a well-known name all over Middle-Earth.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTc1MDA4NjI4Nl5BMl5BanBnXkFtZTcwMzc1Mzg3OA@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":2,
+         "character":"Aragorn",
+         "actor":"Viggo Mortensen",
+         "bio":"Aragorn II was the son of Arathorn and Gilraen, and an only child. He was born on March 1st, 2931 of the Third Age, he was the thirty-ninth generation of the heirs of Isildur. Aragorn was only two years old when his father died, so his mother took him to live in Rivendell. There, he was given the name Estel to hide his true identity and heritage because Sauron was searching to see if any heir of Isildur lived. ",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTE5NjA0MTk3M15BMl5BanBnXkFtZTYwMTg0MjA3._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":3,
+         "character":"Bilbo Baggins",
+         "actor":"Ian Holm",
+         "bio":"Bilbo Baggins is a Hobbit of the Shire, born on September 22nd in the year 2890 (1290 Shire Reckoning) of the Third Age of Middle-earth (using J.R.R. Tolkien's literary timeline). In 2941, the Wizard Gandalf enlisted Bilbo as a burglar for Thorin Oakenshield and Company, Dwarves intent on liberating their ancestral treasure from the dragon Smaug",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTc3MTMyODg5MF5BMl5BanBnXkFtZTcwNjc3NDk0OA@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":4,
+         "character":"Frodo Baggins",
+         "actor":"Elijah Wood",
+         "bio":"Frodo Baggins is a Hobbit of the Shire, born on September 22nd in the year 2968 (1368 Shire Reckoning) of the Third Age of Middle-earth (using J.R.R. Tolkien's literary timeline). In 2980, following the deaths of his parents Drogo and Primula Baggins, Frodo is adopted by his older cousin Bilbo and is named as his heir.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTYzODgwNDUzMV5BMl5BanBnXkFtZTcwNTY3NDk2Mw@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":5,
+         "character":"Sam",
+         "actor":"Sean Astin",
+         "bio":"Samwise Gamgee also known as Sam is a Hobbit of the Shire. He is Frodo Baggins's gardener and his companion on his journey to Mount Doom. When Gandalf comes to the Shire to tell Frodo the truth about the ring he inherited from his uncle Bilbo, he catches Sam eavesdropping, and orders him to go with Frodo on his journey. ",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTgyMTQ4MTI3OV5BMl5BanBnXkFtZTcwMzgwMjk2Mw@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":6,
+         "character":"Gollum",
+         "actor":"Andy Serkis",
+         "bio":"A character in The Return of the King, I am Gollum, a Stoor and the ancient ring bearer who had the One Ring before Bilbo and Frodo. Other names I am known as are: Trahald, Slinker and Stinker. Before he became Gollum he was formally known as Smeagol and he hailed origionally from near the Gladden Fields, Gollum is roughly 3ft 8inches tall, though it is hard to measure exactly.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTkyNzc1MjczOF5BMl5BanBnXkFtZTcwMTg0Mzg3OA@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":7,
+         "character":"Legolas",
+         "actor":"Orlando Bloom",
+         "bio":"Legolas is an Elf who was part of the Fellowship of the Ring in the Third Age. He is the son of the Elf-king Thranduil of Mirkwood, a Prince of the Woodland Realm (Mirkwood), a messenger, and a master bowman. With his keen eyesight, sensitive hearing, and excellent bowmanship, Legolas is a valuable resource to the other eight of the Fellowship. His age was never stated by Tolkien. Legolas became great friends with the dwarf Gimli, despite their long held differences, who was also a member of the Fellowship.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTYzNDM4NzQwN15BMl5BanBnXkFtZTcwMzI2MjY0NA@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":8,
+         "character":"Gimli",
+         "actor":"John Rhys-Davies",
+         "bio":"Gimli is the son of Gloin, who was one of Bilbo's companions on the quest to reclaim the Lonely Mountain from the dragon, Smaug the Magnificent. Gimli was deemed too young to go on that journey, but 77 years later would find himself traveling with Bilbo's adopted heir, Frodo Baggins, on a quest of much greater importance. Due to events in The Hobbit, Gimli held elves in contempt, but slowly over the course of The Lord of the Rings was able to embrace the pointy-eared race.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BNzcxNjI5MDYxM15BMl5BanBnXkFtZTcwODY3NDk2Mw@@._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":9,
+         "character":"Pippin",
+         "actor":"Billy Boyd",
+         "bio":"Peregrin Took (nicknamed 'Pippin') is a Took and that should be description enough. Tooks dwell in the Shire in Tookborough. They're set apart from the rest of Hobbits because of their inquisitiveness and adventuresome spirit. Pippin journeys with Frodo to Rivendell and becomes a member of the Fellowship of the Ring.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTc2Nzg4ODk2OF5BMl5BanBnXkFtZTYwODQ1MjA3._V1._SX100_SY140_.jpg"
+      },
+      {
+         "id":10,
+         "character":"Merry",
+         "actor":"Dominic Monaghan",
+         "bio":"Meriadoc 'Merry' Brandybuck is a Hobbit of the Shire and a kinsman to both Peregrin 'Pippin' Took and Frodo Baggins. Merry (along with Pippin and Frodo's servant Samwise Gamgee) accompanied Frodo on the journey to take the One Ring of Sauron to Rivendell for safe-keeping and after as one of the Companions of the Ring. The Company is broken in Parth Galen when Boromir of Gondor betrays Frodo. Merry and Pippin are captured and carried away by Orcs.",
+         "image":"http://ia.media-imdb.com/images/M/MV5BMTI4ODY2NjMyNF5BMl5BanBnXkFtZTcwMjkwMjk2Mw@@._V1._SX100_SY140_.jpg"
+      }
+   ]
+}
