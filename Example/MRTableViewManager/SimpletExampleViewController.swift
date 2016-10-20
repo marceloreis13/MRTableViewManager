@@ -13,7 +13,7 @@ final class SimpleExampleViewController: UITableViewController {
 	// MARK: - Attributes
 	
 	// Privates
-	private let _tableViewManager:TableViewManager = TableViewManager()
+	fileprivate let _tableViewManager:TableViewManager = TableViewManager()
 	
 	// MARK: - Life Cycle
 	override func viewDidLoad() {
@@ -32,13 +32,13 @@ final class SimpleExampleViewController: UITableViewController {
 	}
 	
 	// MARK: - Private functions
-	private func _updateTableView(){
+	fileprivate func _updateTableView(){
 		//Add section with feed data
 		Serializer.jsonFromUrl(
-			"https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
+			url: "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
-				if let _characters: [NSDictionary] = data["foobars"] as? [NSDictionary] {
-					self._tableViewManager.addSection(_characters)
+                if let _characters: [[String:AnyObject]] = data["foobars"] as? [[String:AnyObject]] {
+					let _ = self._tableViewManager.addSection(_characters)
 				}
 			},
 			errorHandler: { error in
@@ -54,7 +54,7 @@ extension SimpleExampleViewController: TableViewManagerDelegate {
 		return self.tableView
 	}
 	
-	func next(callback: (TableViewManager.Callback)?) {
+	func next(_ callback: (TableViewManager.Callback)?) {
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
@@ -62,16 +62,16 @@ extension SimpleExampleViewController: TableViewManagerDelegate {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension SimpleExampleViewController {
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self._tableViewManager.total(section)
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let _cell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath)
 		let _foo = self._tableViewManager.get(indexPath)
 		var _rowContent:String = ""
 		if let _character = _foo.data["character"] as? String {

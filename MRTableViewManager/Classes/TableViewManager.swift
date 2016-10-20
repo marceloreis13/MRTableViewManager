@@ -6,30 +6,32 @@
 //
 //
 
+import UIKit
+
 // MARK: Table View Manager Delegate
 public protocol TableViewManagerDelegate {
 	// Attributes
-	func next(callback: (TableViewManager.Callback)?)
+	func next(_ callback: (TableViewManager.Callback)?)
 	func getTableView() -> UITableView
 }
 
 // MARK: TableViewRowManager Class
-public class TableViewManager {
+open class TableViewManager {
 	// MARK: - Type Alias
 	public typealias Callback = () -> ()
 	public typealias SectionType = TableViewSection.SectionType
 	
 	// MARK: - Private Atributtes
-	private var _sections:[TableViewSection]
-	private var _preloadItems:Int
+	fileprivate var _sections: [TableViewSection]
+	fileprivate var _preloadItems: Int
 	
 	// MARK: - Public Atributtes
-	public var delegate: TableViewManagerDelegate?
-	public var tableViewManager: UITableView?
-	public var currentPage: Int = 1
+	open var delegate: TableViewManagerDelegate?
+	open var tableViewManager: UITableView?
+	open var currentPage: Int = 1
 	
 	// MARK: - Init
-	public init(preloadItems:Int=1){
+	public init(preloadItems: Int = 1){
 		//Start _sections
 		self._sections = [TableViewSection]()
 		
@@ -42,20 +44,18 @@ public class TableViewManager {
 	
 	
 	// MARK: - Private functions
-	private func _tableViewReloadData(){
+	fileprivate func _tableViewReloadData() {
 		//Reload table view data after fill section
 		if let _tableView = self.delegate?.getTableView() {
-			dispatch_async(dispatch_get_main_queue(), {
+			DispatchQueue.main.async(execute: {
 				_tableView.reloadData()
 			})
-		}else{
-			print("Missing tableViewManager")
 		}
 	}
 	
-	private func _processRowsData(data: [NSDictionary]) -> [TableViewRow]{
+    fileprivate func _processRowsData(_ data: [[String: AnyObject]]) -> [TableViewRow] {
 		// Rows map
-		var _rows:[TableViewRow] = []
+		var _rows: [TableViewRow] = []
 		
 		//Loop with data received
 		for item in data {
@@ -65,7 +65,7 @@ public class TableViewManager {
 		return _rows
 	}
 	
-	private func _addSection(data: [NSDictionary], tag:String = "", type:SectionType = .Unknow) -> TableViewSection {
+	fileprivate func _addSection(_ data: [[String: AnyObject]], tag: String = "", type: SectionType = .unknow) -> TableViewSection {
 		//Remove preload before add any section
 		self._removePreload()
 		
@@ -77,10 +77,10 @@ public class TableViewManager {
 		
 		if _rows.isEmpty {
 			_rows = self._processRowsData([])
-			_type = .Empty
+			_type = .empty
 		}
 		
-		let _section:TableViewSection = TableViewSection(rows: _rows, tag: tag, type: _type)
+		let _section: TableViewSection = TableViewSection(rows: _rows, tag: tag, type: _type)
 		self._sections.append(_section)
 		
 		//Reload table view data after fill section
@@ -90,75 +90,73 @@ public class TableViewManager {
 	}
 	
 	//Remove preload
-	private func _removePreload(){
+	fileprivate func _removePreload() {
 		guard self._preloadItems > 0 else {return}
 		guard self._sections.first != nil else {return}
 		
-		if self._sections.first!.type == .Preload {
+		if self._sections.first!.type == .preload {
 			self._sections.removeFirst()
 		}
 		
 	}
 	
 	//Remove empties
-	private func _removeEmpty(){
+	fileprivate func _removeEmpty() {
 		guard self._sections.last != nil else {return}
 		
-		if self._sections.last!.type == .Empty {
+		if self._sections.last!.type == .empty {
 			self._sections.removeLast()
 		}
 	}
 	
 	// MARK: - Public functions
 	
-	public func addSection(data: [NSDictionary], tag:String = "") -> TableViewSection {
-		var _data:[NSDictionary] = data
+	open func addSection(_ data: [[String: AnyObject]], tag: String = "") -> TableViewSection {
+		var _data: [[String: AnyObject]] = data
 		if data.count == 0 {
 			_data = []
 		}
 		
-		let _section = self._addSection(_data, tag: tag, type: .Content)
+		let _section = self._addSection(_data, tag: tag, type: .content)
 		
 		return _section
 	}
 	
-	public func addSectionScrollingToEnd(data: [NSDictionary], tag:String = ""){
+	open func addSectionScrollingToEnd(_ data: [[String: AnyObject]], tag: String = "") {
 		//Add Section
 		let _section = self.addSection(data, tag: tag)
 		
 		//Scrolling to end
 		let _rowEndIndex = _section.rows.endIndex - 1
 		let _sectionEndIndex = self._sections.endIndex - 1
-		let indexPath = NSIndexPath(forRow: _rowEndIndex, inSection: _sectionEndIndex)
+		let indexPath = IndexPath(row: _rowEndIndex, section: _sectionEndIndex)
 		if let _tableView = self.delegate?.getTableView() {
-			_tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
+			_tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.middle, animated: true)
 		}else{
 			print("Missing tableViewManager")
 		}
 	}
 	
 	// Fill the _section with preload data
-	public func addPreload() -> TableViewSection{
-		guard self._preloadItems > 0 else {return TableViewSection()}
+	open func addPreload() {
+		guard self._preloadItems > 0 else { return }
 		
 		self.clear()
 		
 		var _rows = [TableViewRow]()
 		for _ in 1...self._preloadItems {
-			_rows.append(TableViewRow(data: NSDictionary()))
+            _rows.append(TableViewRow(data: [:]))
 		}
 		
-		let _section:TableViewSection = TableViewSection(rows: _rows, tag: "preload", type: .Preload)
+		let _section: TableViewSection = TableViewSection(rows: _rows, tag: "preload", type: .preload)
 		
 		self._sections.append(_section)
 		
 		//Reload table view data after fill section
 		self._tableViewReloadData()
-		
-		return _section
 	}
 	
-	public func clear(){
+	open func clear() {
 		guard !self._sections.isEmpty else {return}
 		
 		self.currentPage = 1
@@ -166,7 +164,7 @@ public class TableViewManager {
 		self._sections = [TableViewSection]()
 	}
 	
-	public func clearKeepingFirst(){
+	open func clearKeepingFirst() {
 		guard !self._sections.isEmpty else {return}
 		guard self._sections.count >= 1 else {return}
 		
@@ -175,40 +173,41 @@ public class TableViewManager {
 		self._sections.append(_firstSection!)
 	}
 	
-	public func sectionType(section: Int) -> SectionType{
-		guard !self._sections.isEmpty else {return SectionType.Unknow}
+	open func sectionType(_ section: Int) -> SectionType {
+		guard !self._sections.isEmpty else {return SectionType.unknow}
 		
 		return self._sections[section].type
 	}
 	
-	public func sectionTag(section: Int) -> String{
+	open func sectionTag(_ section: Int) -> String {
 		guard !self._sections.isEmpty else {return ""}
 		
 		return self._sections[section].tag
 	}
 	
-	public func get(indexPath: NSIndexPath) -> TableViewRow {
-		guard !self._sections.isEmpty && !self._sections[indexPath.section].rows.isEmpty else {return TableViewRow(data: NSDictionary())}
+	open func get(_ indexPath: IndexPath) -> TableViewRow {
+        guard !self._sections.isEmpty && !self._sections[(indexPath as NSIndexPath).section].rows.isEmpty else { return TableViewRow(data: [:]) }
 		
-		return self._sections[indexPath.section].rows[indexPath.row]
+		return self._sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
 	}
 	
-	public func remove(indexPath: NSIndexPath){
-		guard !self._sections.isEmpty && !self._sections[indexPath.section].rows.isEmpty else {return}
+	open func remove(_ indexPath: IndexPath) {
+		guard !self._sections.isEmpty && !self._sections[(indexPath as NSIndexPath).section].rows.isEmpty else {return}
 		
-		self._sections[indexPath.section].rows.removeAtIndex(indexPath.row)
+		self._sections[(indexPath as NSIndexPath).section].rows.remove(at: (indexPath as NSIndexPath).row)
 	}
 	
 	//Total of sections
-	public func total() -> Int{
+	open func total() -> Int {
 		return self._sections.count
 	}
 	
 	//Total of rows in specific section
-	public func total(section: Int) -> Int{
-		guard self._sections[section].type != SectionType.Empty else {
+	open func total(_ section: Int) -> Int {
+		guard self._sections[section].type != SectionType.empty else {
 			return 1
 		}
+        
 		return self._sections[section].rows.count
 	}
 	

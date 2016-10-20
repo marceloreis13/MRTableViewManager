@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
 	
 	// Fit image height or width
-	func fixContent(contentMode:UIViewContentMode = .ScaleAspectFill) {
+	func fixContent(contentMode:UIViewContentMode = .scaleAspectFill) {
 		
 		self.clipsToBounds = true
 		self.contentMode = contentMode

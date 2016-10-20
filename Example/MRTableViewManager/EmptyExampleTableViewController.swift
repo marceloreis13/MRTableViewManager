@@ -14,7 +14,7 @@ final class EmptyExampleTableViewController: UITableViewController {
 	// MARK: - Attributes
 	
 	// Privates
-	private let _tableViewManager:TableViewManager = TableViewManager()
+	fileprivate let _tableViewManager:TableViewManager = TableViewManager()
 	
 	//XIBs
 	private let MRContentTVC = "MRContentTableViewCell"
@@ -31,9 +31,9 @@ final class EmptyExampleTableViewController: UITableViewController {
 		self._updateTableView()
 		
 		// Register XIBs
-		self.tableView.registerNib(UINib(nibName: self.MRContentTVC, bundle: nil), forCellReuseIdentifier: self.MRContentTVC)
-		self.tableView.registerNib(UINib(nibName: self.MREmptyTVC, bundle: nil), forCellReuseIdentifier: self.MREmptyTVC)
-		self.tableView.registerNib(UINib(nibName: self.MRPreloadTVC, bundle: nil), forCellReuseIdentifier: self.MRPreloadTVC)
+		self.tableView.register(UINib(nibName: self.MRContentTVC, bundle: nil), forCellReuseIdentifier: self.MRContentTVC)
+		self.tableView.register(UINib(nibName: self.MREmptyTVC, bundle: nil), forCellReuseIdentifier: self.MREmptyTVC)
+		self.tableView.register(UINib(nibName: self.MRPreloadTVC, bundle: nil), forCellReuseIdentifier: self.MRPreloadTVC)
 		
 		//Auto Layout
 		self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -45,9 +45,9 @@ final class EmptyExampleTableViewController: UITableViewController {
 	}
 	
 	// MARK: - Private functions
-	private func _updateTableView(){
+	fileprivate func _updateTableView(){
 		//Add section with a empty feed data
-		self._tableViewManager.addSection([])
+		let _ = self._tableViewManager.addSection([])
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -63,7 +63,7 @@ extension EmptyExampleTableViewController: TableViewManagerDelegate {
 		return self.tableView
 	}
 	
-	func next(callback: (TableViewManager.Callback)?) {
+	func next(_ callback: (TableViewManager.Callback)?) {
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
@@ -71,26 +71,26 @@ extension EmptyExampleTableViewController: TableViewManagerDelegate {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension EmptyExampleTableViewController {
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self._tableViewManager.total(section)
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var _cell:TableViewCell
 		let _sectionType = self._tableViewManager.sectionType(indexPath.section)
 		
 		switch _sectionType {
-		case .Empty:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MREmptyTableViewCell.storyboardId) as! MREmptyTableViewCell
-		case .Preload:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MRPreloadTableViewCell.storyboardId) as! MRPreloadTableViewCell
-		case .Content:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MRContentTableViewCell.storyboardId) as! MRContentTableViewCell
-		case .Unknow:
+		case .empty:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MREmptyTableViewCell.storyboardId) as! MREmptyTableViewCell
+		case .preload:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MRPreloadTableViewCell.storyboardId) as! MRPreloadTableViewCell
+		case .content:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MRContentTableViewCell.storyboardId) as! MRContentTableViewCell
+		case .unknow:
 			fatalError("Application requested for a non-existent item")
 		}
 		
@@ -99,8 +99,8 @@ extension EmptyExampleTableViewController {
 		
 		return _cell
 	}
-	
-	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 100
 	}
 	

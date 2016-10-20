@@ -12,17 +12,17 @@ import Foundation
 final class Serializer {
 	
 	// Retrieve JSON from Url and tries to parse it
-	static func jsonFromUrl(url: String, completionHandler: (NSDictionary) -> (), errorHandler: (NSError?) -> ()) {
+	static func jsonFromUrl(url: String, completionHandler: @escaping (NSDictionary) -> (), errorHandler: @escaping (NSError?) -> ()) {
 		
 		let url = NSURL(string: url)
 		
-		let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+		let task = URLSession.shared.dataTask(with: url! as URL) {(data, response, error) in
 			
 			if error != nil {
-				errorHandler(error)
+				errorHandler(error as NSError?)
 			} else {
-				let result = NSString(data: data!, encoding: NSUTF8StringEncoding)
-				completionHandler(Serializer.jsonFromString(result!))
+				let result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+				completionHandler(Serializer.jsonFromString(json: result!))
 			}
 			
 		}
@@ -34,15 +34,15 @@ final class Serializer {
 	static func jsonFromString(json: NSString) -> NSDictionary {
 		
 		// convert String to NSData
-		let data = json.dataUsingEncoding(NSUTF8StringEncoding)
+		let data = json.data(using: String.Encoding.utf8.rawValue)
 		var error: NSError?
 		
 		// convert NSData to 'AnyObject'
-		let anyObj: AnyObject?
+		let anyObj: Any?
 		
 		do {
 			
-			anyObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
+            anyObj = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
 			
 		} catch let error1 as NSError {
 			

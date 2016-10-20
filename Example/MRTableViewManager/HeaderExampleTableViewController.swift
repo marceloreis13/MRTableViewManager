@@ -13,7 +13,7 @@ final class HeaderExampleViewController: UITableViewController {
     // MARK: - Attributes
     
     // Privates
-    private let _tableViewManager:TableViewManager = TableViewManager()
+    fileprivate let _tableViewManager:TableViewManager = TableViewManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,23 +31,23 @@ final class HeaderExampleViewController: UITableViewController {
     }
     
     // MARK: - Private functions
-    private func _updateTableView(){
+    fileprivate func _updateTableView(){
         //Add section with feed data
         Serializer.jsonFromUrl(
-            "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars-header.txt",
+            url: "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars-header.txt",
             completionHandler: { data in
 				if let _characters: NSDictionary = data["foobars"] as? NSDictionary {
-					if let _visitors: [NSDictionary] = _characters["visitors"] as? [NSDictionary] {
-						self._tableViewManager.addSection(_visitors, tag: "Visitors")
+                    if let _visitors: [[String:AnyObject]] = _characters["visitors"] as? [[String:AnyObject]] {
+						let _ = self._tableViewManager.addSection(_visitors, tag: "Visitors")
 					}
-					if let _warriors: [NSDictionary] = _characters["warriors"] as? [NSDictionary] {
-						self._tableViewManager.addSection(_warriors, tag: "Warrios")
+					if let _warriors: [[String:AnyObject]] = _characters["warriors"] as? [[String:AnyObject]] {
+						let _ = self._tableViewManager.addSection(_warriors, tag: "Warrios")
 					}
-					if let _wizards: [NSDictionary] = _characters["wizards"] as? [NSDictionary] {
-						self._tableViewManager.addSection(_wizards, tag: "Wizards")
+					if let _wizards: [[String:AnyObject]] = _characters["wizards"] as? [[String:AnyObject]] {
+						let _ = self._tableViewManager.addSection(_wizards, tag: "Wizards")
 					}
-					if let _hobbits: [NSDictionary] = _characters["hobbits"] as? [NSDictionary] {
-						self._tableViewManager.addSection(_hobbits, tag: "Hobbits")
+					if let _hobbits: [[String:AnyObject]] = _characters["hobbits"] as? [[String:AnyObject]] {
+						let _ = self._tableViewManager.addSection(_hobbits, tag: "Hobbits")
 					}
 				}
 				
@@ -66,7 +66,7 @@ extension HeaderExampleViewController: TableViewManagerDelegate {
 		return self.tableView
 	}
 	
-	func next(callback: (TableViewManager.Callback)?) {
+	func next(_ callback: (TableViewManager.Callback)?) {
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
@@ -74,21 +74,21 @@ extension HeaderExampleViewController: TableViewManagerDelegate {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension HeaderExampleViewController {
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self._tableViewManager.total(section)
 	}
 	
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return self._tableViewManager.sectionTag(section);
 	}
-	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let _cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath)
-		let _foo = self._tableViewManager.get(indexPath)
+    
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let _cell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath)
+		let _foo = self._tableViewManager.get(indexPath as IndexPath)
 		var _rowContent:String = ""
 		if let _character = _foo.data["character"] as? String {
 			_rowContent = "\(_character)"

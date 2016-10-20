@@ -12,10 +12,10 @@ public protocol TableViewCellDelegate {
 	//    func deleteRow(indexPath: NSIndexPath)
 }
 
-public class TableViewCell: UITableViewCell {
-	public var row: TableViewRow?
-	public var indexPath: NSIndexPath?
-	public var delegate: TableViewCellDelegate?
+open class TableViewCell: UITableViewCell {
+	open var row: TableViewRow?
+	open var indexPath: IndexPath?
+	open var delegate: TableViewCellDelegate?
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
@@ -25,9 +25,9 @@ public class TableViewCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 	}
 	
-	public func updateViewData(){}
+	open func updateViewData() {}
 	
-	override public func prepareForReuse() {
+	override open func prepareForReuse() {
 		super.prepareForReuse()
 	}
 }

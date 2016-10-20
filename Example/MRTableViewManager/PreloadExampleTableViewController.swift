@@ -15,12 +15,12 @@ final class PreloadExampleTableViewController: UITableViewController {
 	
 	// Privates
 	//You can insert how many preload items that you want, but by default is 1 item
-	private let _tableViewManager:TableViewManager = TableViewManager(preloadItems: 3)
+	fileprivate let _tableViewManager:TableViewManager = TableViewManager(preloadItems: 3)
 
 	//XIBs
-	private let MRContentTVC = "MRContentTableViewCell"
-	private let MREmptyTVC = "MREmptyTableViewCell"
-	private let MRPreloadTVC = "MRPreloadTableViewCell"
+	fileprivate let MRContentTVC = "MRContentTableViewCell"
+	fileprivate let MREmptyTVC = "MREmptyTableViewCell"
+	fileprivate let MRPreloadTVC = "MRPreloadTableViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,9 @@ final class PreloadExampleTableViewController: UITableViewController {
 		
 		// Register XIBs
 		//Here, you can asign NIBs made by yourself, just alter this lines above
-		self.tableView.registerNib(UINib(nibName: self.MRContentTVC, bundle: nil), forCellReuseIdentifier: self.MRContentTVC)
-		self.tableView.registerNib(UINib(nibName: self.MREmptyTVC, bundle: nil), forCellReuseIdentifier: self.MREmptyTVC)
-		self.tableView.registerNib(UINib(nibName: self.MRPreloadTVC, bundle: nil), forCellReuseIdentifier: self.MRPreloadTVC)
+		self.tableView.register(UINib(nibName: self.MRContentTVC, bundle: nil), forCellReuseIdentifier: self.MRContentTVC)
+		self.tableView.register(UINib(nibName: self.MREmptyTVC, bundle: nil), forCellReuseIdentifier: self.MREmptyTVC)
+		self.tableView.register(UINib(nibName: self.MRPreloadTVC, bundle: nil), forCellReuseIdentifier: self.MRPreloadTVC)
 		
 		//Auto Layout
 		self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -47,17 +47,17 @@ final class PreloadExampleTableViewController: UITableViewController {
 	}
 	
 	// MARK: - Private functions
-	private func _updateTableView(){
+	fileprivate func _updateTableView(){
 		//Add section with feed data
 		Serializer.jsonFromUrl(
-			"https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
+            url: "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
 	
 				// I put this sleep to force the preload appear in tableview
 				sleep(3)
 				
-				if let _characters: [NSDictionary] = data["foobars"] as? [NSDictionary] {
-					self._tableViewManager.addSection(_characters)
+                if let _characters: [[String:AnyObject]] = data["foobars"] as? [[String:AnyObject]] {
+					let _ = self._tableViewManager.addSection(_characters)
 				}
 			},
 			errorHandler: { error in
@@ -79,7 +79,7 @@ extension PreloadExampleTableViewController: TableViewManagerDelegate {
 		return self.tableView
 	}
 	
-	func next(callback: (TableViewManager.Callback)?) {
+	func next(_ callback: (TableViewManager.Callback)?) {
 		self._tableViewManager.currentPage += 1
 		self._updateTableView()
 	}
@@ -87,26 +87,26 @@ extension PreloadExampleTableViewController: TableViewManagerDelegate {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension PreloadExampleTableViewController {
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return self._tableViewManager.total()
 	}
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self._tableViewManager.total(section)
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		var _cell:TableViewCell
 		let _sectionType = self._tableViewManager.sectionType(indexPath.section)
 		
 		switch _sectionType {
-		case .Empty:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MREmptyTableViewCell.storyboardId) as! MREmptyTableViewCell
-		case .Preload:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MRPreloadTableViewCell.storyboardId) as! MRPreloadTableViewCell
-		case .Content:
-			_cell = tableView.dequeueReusableCellWithIdentifier(MRContentTableViewCell.storyboardId) as! MRContentTableViewCell
-		case .Unknow:
+		case .empty:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MREmptyTableViewCell.storyboardId) as! MREmptyTableViewCell
+		case .preload:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MRPreloadTableViewCell.storyboardId) as! MRPreloadTableViewCell
+		case .content:
+			_cell = tableView.dequeueReusableCell(withIdentifier: MRContentTableViewCell.storyboardId) as! MRContentTableViewCell
+		case .unknow:
 			fatalError("Application requested for a non-existent item")
 		}
 		
@@ -116,7 +116,7 @@ extension PreloadExampleTableViewController {
 		return _cell
 	}
 	
-	override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 100
 	}	
 }

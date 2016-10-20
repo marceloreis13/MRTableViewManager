@@ -45,11 +45,11 @@ class MRContentTableViewCell: TableViewCell {
 			self.labelBio.text = _bio
 		}
 		if let _image = self.row?.data["image"] as? String {
-			ImageLoader.sharedLoader.imageForUrl(_image, completionHandler: { loadedImage in
+			ImageLoader.sharedLoader.imageForUrl(urlString: _image, completionHandler: { loadedImage in
 				
 				if loadedImage != nil {
 					self.imgCharacter.image = loadedImage
-					self.imgCharacter.fixContent(.Top)
+					self.imgCharacter.fixContent(contentMode: .top)
 					self.setNeedsLayout()
 				}
 				
@@ -57,7 +57,7 @@ class MRContentTableViewCell: TableViewCell {
 		}
 	}
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

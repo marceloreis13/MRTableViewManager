@@ -7,12 +7,12 @@
 //
 
 // MARK: - TVRow Class
-public class TableViewRow {
+open class TableViewRow {
 	// MARK: Proprieties
-	public let data: NSDictionary
+    open let data: [String: AnyObject]
 	
 	// MARK: Init
-	public init(data: NSDictionary){
+	public init(data: [String: AnyObject]){
 		self.data = data
 	}
 }

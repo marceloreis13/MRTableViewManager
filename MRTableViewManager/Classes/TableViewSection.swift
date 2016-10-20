@@ -7,31 +7,30 @@
 //
 
 // MARK: - TableViewSection Class
-public class TableViewSection {
+open class TableViewSection {
 	// MARK: Enums and Structs
 	
 	//Definition of row types
 	public enum SectionType:Int {
-		case Unknow
-		case Empty
-		case Preload
-		case Content
+		case unknow
+		case empty
+		case preload
+		case content
 	}
 	
 	// MARK: - Proprieties
 	var rows: [TableViewRow]
-	var tag:String
+	var tag: String
 	var type: SectionType
 	
 	// MARK: - Init
-	init(rows: [TableViewRow] = [], tag:String = "", type: SectionType = .Unknow){
+	init(rows: [TableViewRow] = [], tag: String = "", type: SectionType = .unknow){
 		self.rows = rows
 		self.tag = tag
 		self.type = type
 	}
 	
-	func add(row: TableViewRow){
+	func add(_ row: TableViewRow) {
 		self.rows.append(row)
 	}
 }
-
