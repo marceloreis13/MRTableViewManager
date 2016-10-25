@@ -53,19 +53,23 @@ open class TableViewManager {
 		}
 	}
 	
-    fileprivate func _processRowsData(_ data: [[String: AnyObject]]) -> [TableViewRow] {
+    fileprivate func _processRowsData(_ data: AnyObject?) -> [TableViewRow] {
+        guard data != nil else { return [] }
+        
 		// Rows map
 		var _rows: [TableViewRow] = []
 		
 		//Loop with data received
-		for item in data {
-			_rows.append(TableViewRow(data: item))
-		}
+        if let _data = data as? [AnyObject] {
+            for item in _data {
+                _rows.append(TableViewRow(data: item))
+            }
+        }
 		
 		return _rows
 	}
 	
-	fileprivate func _addSection(_ data: [[String: AnyObject]], tag: String = "", type: SectionType = .unknow) -> TableViewSection {
+	fileprivate func _addSection(_ data: AnyObject?, tag: String = "", type: SectionType = .unknow) -> TableViewSection {
 		//Remove preload before add any section
 		self._removePreload()
 		
@@ -76,7 +80,7 @@ open class TableViewManager {
 		var _type = type
 		
 		if _rows.isEmpty {
-			_rows = self._processRowsData([])
+			_rows = self._processRowsData(nil)
 			_type = .empty
 		}
 		
@@ -111,18 +115,13 @@ open class TableViewManager {
 	
 	// MARK: - Public functions
 	
-	open func addSection(_ data: [[String: AnyObject]], tag: String = "") -> TableViewSection {
-		var _data: [[String: AnyObject]] = data
-		if data.count == 0 {
-			_data = []
-		}
-		
-		let _section = self._addSection(_data, tag: tag, type: .content)
+	open func addSection(_ data: AnyObject, tag: String = "") -> TableViewSection {
+		let _section = self._addSection(data, tag: tag, type: .content)
 		
 		return _section
 	}
 	
-	open func addSectionScrollingToEnd(_ data: [[String: AnyObject]], tag: String = "") {
+	open func addSectionScrollingToEnd(_ data: AnyObject, tag: String = "") {
 		//Add Section
 		let _section = self.addSection(data, tag: tag)
 		
@@ -145,7 +144,7 @@ open class TableViewManager {
 		
 		var _rows = [TableViewRow]()
 		for _ in 1...self._preloadItems {
-            _rows.append(TableViewRow(data: [:]))
+            _rows.append(TableViewRow())
 		}
 		
 		let _section: TableViewSection = TableViewSection(rows: _rows, tag: "preload", type: .preload)
@@ -186,7 +185,7 @@ open class TableViewManager {
 	}
 	
 	open func get(_ indexPath: IndexPath) -> TableViewRow {
-        guard !self._sections.isEmpty && !self._sections[(indexPath as NSIndexPath).section].rows.isEmpty else { return TableViewRow(data: [:]) }
+        guard !self._sections.isEmpty && !self._sections[(indexPath as NSIndexPath).section].rows.isEmpty else { return TableViewRow() }
 		
 		return self._sections[(indexPath as NSIndexPath).section].rows[(indexPath as NSIndexPath).row]
 	}

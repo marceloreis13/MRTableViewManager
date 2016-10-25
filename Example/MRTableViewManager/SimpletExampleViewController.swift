@@ -38,7 +38,7 @@ final class SimpleExampleViewController: UITableViewController {
 			url: "https://raw.githubusercontent.com/marceloreis13/MRTableViewManager/master/foobars.txt",
 			completionHandler: { data in
                 if let _characters: [[String:AnyObject]] = data["foobars"] as? [[String:AnyObject]] {
-					let _ = self._tableViewManager.addSection(_characters)
+					let _ = self._tableViewManager.addSection(_characters as AnyObject)
 				}
 			},
 			errorHandler: { error in

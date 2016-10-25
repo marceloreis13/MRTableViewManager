@@ -9,10 +9,14 @@
 // MARK: - TVRow Class
 open class TableViewRow {
 	// MARK: Proprieties
-    open let data: [String: AnyObject]
+    open let data: AnyObject
 	
 	// MARK: Init
-	public init(data: [String: AnyObject]){
-		self.data = data
-	}
+    public init(data: AnyObject){
+        self.data = data
+    }
+    
+    public init(){
+        self.data = [AnyObject]() as AnyObject
+    }
 }

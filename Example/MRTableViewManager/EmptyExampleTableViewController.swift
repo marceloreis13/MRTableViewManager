@@ -47,7 +47,7 @@ final class EmptyExampleTableViewController: UITableViewController {
 	// MARK: - Private functions
 	fileprivate func _updateTableView(){
 		//Add section with a empty feed data
-		let _ = self._tableViewManager.addSection([])
+		let _ = self._tableViewManager.addSection([] as AnyObject)
 	}
 	
 	override func didReceiveMemoryWarning() {

@@ -57,7 +57,7 @@ final class PreloadExampleTableViewController: UITableViewController {
 				sleep(3)
 				
                 if let _characters: [[String:AnyObject]] = data["foobars"] as? [[String:AnyObject]] {
-					let _ = self._tableViewManager.addSection(_characters)
+					let _ = self._tableViewManager.addSection(_characters as AnyObject)
 				}
 			},
 			errorHandler: { error in

@@ -38,16 +38,16 @@ final class HeaderExampleViewController: UITableViewController {
             completionHandler: { data in
 				if let _characters: NSDictionary = data["foobars"] as? NSDictionary {
                     if let _visitors: [[String:AnyObject]] = _characters["visitors"] as? [[String:AnyObject]] {
-						let _ = self._tableViewManager.addSection(_visitors, tag: "Visitors")
+						let _ = self._tableViewManager.addSection(_visitors as AnyObject, tag: "Visitors")
 					}
 					if let _warriors: [[String:AnyObject]] = _characters["warriors"] as? [[String:AnyObject]] {
-						let _ = self._tableViewManager.addSection(_warriors, tag: "Warrios")
+						let _ = self._tableViewManager.addSection(_warriors as AnyObject, tag: "Warrios")
 					}
 					if let _wizards: [[String:AnyObject]] = _characters["wizards"] as? [[String:AnyObject]] {
-						let _ = self._tableViewManager.addSection(_wizards, tag: "Wizards")
+						let _ = self._tableViewManager.addSection(_wizards as AnyObject, tag: "Wizards")
 					}
 					if let _hobbits: [[String:AnyObject]] = _characters["hobbits"] as? [[String:AnyObject]] {
-						let _ = self._tableViewManager.addSection(_hobbits, tag: "Hobbits")
+						let _ = self._tableViewManager.addSection(_hobbits as AnyObject, tag: "Hobbits")
 					}
 				}
 				
